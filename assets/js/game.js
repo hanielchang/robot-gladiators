@@ -115,6 +115,23 @@ var endGame = function() {
       window.alert("You've lost the game.");
     }
 
+    // Check and compare high score
+    var prevHighScore = localStorage.getItem("highScore");
+    var playerScore = playerInfo.money;
+
+    if (prevHighScore !==  null) {
+      if (playerScore > prevHighScore) {
+        localStorage.setItem("highScore", playerScore);
+        window.alert("Congrats! You have beat the current high score!");
+      }
+      else {
+        window.alert("Sorry. You did not beat the current high score.");
+      }
+    }
+    else {
+      window.alert("Congrats! You have just set the first high score!");
+      localStorage.setItem("highScore", playerInfo.money);
+    }
     // ask player if they'd like to play again
     var playAgainConfirm = window.confirm("Would you like to play again?");
 
